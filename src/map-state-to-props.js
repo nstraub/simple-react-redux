@@ -16,5 +16,15 @@ export default function (state, componentProps) {
             }
         });
     }
+    if (componentProps.getFromActions && componentProps.getFromActions.CURRY) {
+        ret.CURRY = componentProps.getFromActions.CURRY.map(function (path) {
+            try {
+                return traverse(state, path.split('.'));
+            } catch (e) {
+                console.warn(`WARNING: "${path}" does not exist. null will be assigned in place of the desired value`);
+                return null
+            }
+        });
+    }
     return ret;
 }

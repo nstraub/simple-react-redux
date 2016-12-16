@@ -1,5 +1,8 @@
 describe('simple react redux spec', ()=>{
-    beforeAll(() => spyOn(console, 'error'));
+    beforeAll(function () {
+        spyOn(console, 'error');
+        spyOn(console, 'warn');
+    });
 
     require('./traverse_spec');
     require('./map-state-to-props_spec');
