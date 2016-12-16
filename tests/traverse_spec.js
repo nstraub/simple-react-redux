@@ -1,16 +1,9 @@
 import traverse from '../src/traverse'
 
-describe('object traversal function', () => {
+import {_object} from './utils';
 
-    var _path, _object = {
-        firstLevel: {
-            secondLevel: {
-                value: 'test value'
-            },
-            second: null,
-            arr: ['one', 'two', {value: 'test value'}]
-        },
-    };
+describe('object traversal function', () => {
+    var _path;
 
     function initPath(rest) {
         _path = ['firstLevel'].concat(rest);
@@ -18,7 +11,7 @@ describe('object traversal function', () => {
 
     it('gets a value for the supplied path', () => {
         initPath(['secondLevel', 'value']);
-        expect(traverse(_object, _path)).toBe('test value');
+        expect(traverse(_object, _path)).toBe('second level test value');
     });
 
     it('throws error if supplied path doesn`t exist', () => {
@@ -38,6 +31,6 @@ describe('object traversal function', () => {
 
     it('gets a value from an array', () => {
         initPath(['arr', 2, 'value']);
-        expect(traverse(_object, _path)).toBe('test value');
+        expect(traverse(_object, _path)).toBe('array test value');
     });
 });

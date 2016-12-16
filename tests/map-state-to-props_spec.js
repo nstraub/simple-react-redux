@@ -1,0 +1,37 @@
+import mapStateToProps from '../src/map-state-to-props';
+import {_object} from './utils';
+
+describe('map state to props', () => {
+    beforeAll(() => spyOn(console, 'error'));
+
+    it('returns an object with correct values', () => {
+        var result = {
+            secondLevel: {
+                value: 'second level test value'
+            },
+            test: 'first level test value'
+        };
+
+        expect(mapStateToProps(_object, {getFromState: ['firstLevel.secondLevel', 'firstLevel.test']})).toEqual(result);
+    });
+
+    it('logs an error on the console when intervening property value is null or undefined', () => {
+        mapStateToProps(_object, {getFromState: ['firstLevel.nonexistant.secondLevel']});
+        expect(console.error).toHaveBeenCalledWith(
+            'value "firstLevel.nonexistant.secondLevel" is inaccessible: firstLevel.nonexistant cannot be resolved')
+    });
+
+    it('returns null if last property value is null or undefined', () => {
+        expect(mapStateToProps(_object, {getFromState: ['firstLevel.second']}).second).toBeNull();
+        expect(console.error).not.toHaveBeenCalled();
+    });
+
+    afterEach(()=> console.error.calls.reset());
+
+    describe('action currying', () => {
+        it('adds curry array with values to return object', () => {});
+        it('logs a warning when one of the curried properties is unavailable', () => {});
+        it('pushes null onto curry array for unavailable properties', () => {});
+        it('', () => {});
+    });
+});
