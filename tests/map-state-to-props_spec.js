@@ -2,7 +2,10 @@ import mapStateToProps from '../src/map-state-to-props';
 import {_object} from './utils';
 
 describe('map state to props', () => {
-    beforeAll(() => spyOn(console, 'error'));
+    function runTest (paths) {
+        return mapStateToProps(_object, {getFromState: paths});
+    }
+
 
     it('returns an object with correct values', () => {
         var result = {
@@ -12,17 +15,17 @@ describe('map state to props', () => {
             test: 'first level test value'
         };
 
-        expect(mapStateToProps(_object, {getFromState: ['firstLevel.secondLevel', 'firstLevel.test']})).toEqual(result);
+        expect(runTest(['firstLevel.secondLevel', 'firstLevel.test'])).toEqual(result);
     });
 
     it('logs an error on the console when intervening property value is null or undefined', () => {
-        mapStateToProps(_object, {getFromState: ['firstLevel.nonexistant.secondLevel']});
+        runTest(['firstLevel.nonexistent.secondLevel']);
         expect(console.error).toHaveBeenCalledWith(
-            'value "firstLevel.nonexistant.secondLevel" is inaccessible: firstLevel.nonexistant cannot be resolved')
+            'value "firstLevel.nonexistent.secondLevel" is inaccessible: firstLevel.nonexistent cannot be resolved')
     });
 
     it('returns null if last property value is null or undefined', () => {
-        expect(mapStateToProps(_object, {getFromState: ['firstLevel.second']}).second).toBeNull();
+        expect(runTest(['firstLevel.second']).second).toBeNull();
         expect(console.error).not.toHaveBeenCalled();
     });
 

@@ -1,5 +1,7 @@
-// Karma configuration
-// Generated on Fri Dec 16 2016 01:54:12 GMT-0300 (Pacific SA Summer Time)
+/*
+ * Karma configuration
+ * Generated on Fri Dec 16 2016 01:54:12 GMT-0300 (Pacific SA Summer Time)
+ */
 var webpackConfig = require('./webpack.config');
 webpackConfig.entry = {};
 
@@ -26,7 +28,7 @@ module.exports = function(config) {
     ],
 
 
-    // preprocess matching files before serving them to the browser
+    // pre-process matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       'tests/index.js': 'webpack'
@@ -75,4 +77,4 @@ module.exports = function(config) {
     // how many browser should be started simultaneous
     concurrency: Infinity
   })
-}
+};

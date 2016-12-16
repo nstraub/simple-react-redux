@@ -3,34 +3,31 @@ import traverse from '../src/traverse'
 import {_object} from './utils';
 
 describe('object traversal function', () => {
-    var _path;
-
     function initPath(rest) {
-        _path = ['firstLevel'].concat(rest);
+        return ['firstLevel'].concat(rest);
     }
 
-    it('gets a value for the supplied path', () => {
-        initPath(['secondLevel', 'value']);
-        expect(traverse(_object, _path)).toBe('second level test value');
+    function runTest(subsequentPath) {
+        return traverse(_object, initPath(subsequentPath));
+    }
+
+    it('gets value for supplied path', () => {
+        expect(runTest(['secondLevel', 'value'])).toBe('second level test value');
     });
 
-    it('throws error if supplied path doesn`t exist', () => {
-        initPath(['nonexistant', 'value']);
-        expect(() => traverse(_object, _path)).toThrowError('nonexistant');
+    it('throws error if supplied path doesn\'t exist', () => {
+        expect(() => runTest(['nonexistent', 'value'])).toThrowError('nonexistent');
     });
 
     it('throws error if supplied path has a null value', () => {
-        initPath(['second', 'value']);
-        expect(() => traverse(_object, _path)).toThrowError('second');
+        expect(() => runTest(['second', 'value'])).toThrowError('second');
     });
 
     it('gets a value from an array', () => {
-        initPath(['arr', 1]);
-        expect(traverse(_object, _path)).toBe('two');
+        expect(runTest(['arr', 1])).toBe('two');
     });
 
     it('gets a value from an array', () => {
-        initPath(['arr', 2, 'value']);
-        expect(traverse(_object, _path)).toBe('array test value');
+        expect(runTest(['arr', 2, 'value'])).toBe('array test value');
     });
 });
