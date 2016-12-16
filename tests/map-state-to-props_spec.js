@@ -1,9 +1,9 @@
 import mapStateToProps from '../src/map-state-to-props';
-import {_object} from './utils';
+import {state} from './utils';
 
 describe('map state to props', () => {
     function runTest (paths) {
-        return mapStateToProps(_object, {getFromState: paths});
+        return mapStateToProps(state, {getFromState: paths});
     }
 
 

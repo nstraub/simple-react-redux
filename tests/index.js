@@ -3,4 +3,5 @@ describe('simple react redux spec', ()=>{
 
     require('./traverse_spec');
     require('./map-state-to-props_spec');
+    require('./map-dispatch-to-props_spec');
 });

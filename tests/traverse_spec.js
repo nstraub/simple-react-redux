@@ -1,6 +1,6 @@
 import traverse from '../src/traverse'
 
-import {_object} from './utils';
+import {state} from './utils';
 
 describe('object traversal function', () => {
     function initPath(rest) {
@@ -8,7 +8,7 @@ describe('object traversal function', () => {
     }
 
     function runTest(subsequentPath) {
-        return traverse(_object, initPath(subsequentPath));
+        return traverse(state, initPath(subsequentPath));
     }
 
     it('gets value for supplied path', () => {
