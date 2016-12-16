@@ -1,2 +1,1 @@
-const func = () => 'lala';
-console.log(func());
+import './traverse'

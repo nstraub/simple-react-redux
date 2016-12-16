@@ -42,14 +42,25 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(1);
+
+/***/ },
+/* 1 */
 /***/ function(module, exports) {
 
 	'use strict';
 
-	var func = function func() {
-	  return 'lala';
-	};
-	console.log(func());
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = traverse;
+	function traverse(obj, keys) {
+	    throw 'not implemented';
+	}
 
 /***/ }
 /******/ ]);
