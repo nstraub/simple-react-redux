@@ -1,4 +1,4 @@
-import traverse from '../src/traverse'
+import traverse from '../src/traverse';
 
 import {state} from './utils';
 
@@ -21,6 +21,11 @@ describe('object traversal function', () => {
 
     it('throws error if supplied path has a null value', () => {
         expect(() => runTest(['second', 'value'])).toThrowError('second');
+    });
+
+    it('returns null if last property value is null or undefined', () =>{
+        expect(runTest('second')).toBeNull();
+        expect(runTest('nothing')).toBeNull();
     });
 
     it('gets a value from an array', () => {

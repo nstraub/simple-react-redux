@@ -22,12 +22,7 @@ describe('map state to props', () => {
     it('logs an error on the console when intervening property value is null or undefined', () => {
         runTest(['firstLevel.nonexistent.secondLevel']);
         expect(console.error).toHaveBeenCalledWith(
-            'value "firstLevel.nonexistent.secondLevel" is inaccessible: firstLevel.nonexistent cannot be resolved')
-    });
-
-    it('returns null if last property value is null or undefined', () => {
-        expect(runTest(['firstLevel.second']).second).toBeNull();
-        expect(console.error).not.toHaveBeenCalled();
+            'value "firstLevel.nonexistent.secondLevel" is inaccessible: firstLevel.nonexistent cannot be resolved');
     });
 
     afterEach(()=> console.error.calls.reset());
@@ -44,7 +39,7 @@ describe('map state to props', () => {
         });
 
         it('pushes null onto curry array for unavailable properties', () => {
-            runTest(['firstLevel.secondLevel.value', 'firstLevel.nonexistent.value', 'firstLevel.test'], ['second level test value', null, 'first level test value'])
+            runTest(['firstLevel.secondLevel.value', 'firstLevel.nonexistent.value', 'firstLevel.test'], ['second level test value', null, 'first level test value']);
         });
 
         it('logs a warning when one of the curried properties is unavailable', () => {

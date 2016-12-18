@@ -14,7 +14,7 @@ describe('map dispatch to props', () => {
     }
 
     function runTest(actions) {
-        return mapDispatchToProps((ret) => {return ret + ' dispatched'}, {getFromActions: actions});
+        return mapDispatchToProps((ret) => {return ret + ' dispatched';}, {getFromActions: actions});
     }
 
     it('returns object with wrapped dispatch calls for all passed actions', () => {

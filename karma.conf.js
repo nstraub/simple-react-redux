@@ -19,6 +19,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      './node_modules/phantomjs-polyfill-object-assign/object-assign-polyfill.js',
       'tests/index.js'
     ],
 
@@ -39,7 +40,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['spec'],
 
 
     // web server port
@@ -67,7 +68,8 @@ module.exports = function(config) {
         'karma-chrome-launcher',
         'karma-phantomjs-launcher',
         'karma-jasmine',
-        'karma-webpack'
+        'karma-webpack',
+        'karma-spec-reporter'
     ],
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

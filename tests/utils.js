@@ -5,7 +5,8 @@ export const state = {
         },
         second: null,
         arr: ['one', 'two', {value: 'array test value'}],
-        test: 'first level test value'
+        test: 'first level test value',
+        nothing: null
     }
 };
 

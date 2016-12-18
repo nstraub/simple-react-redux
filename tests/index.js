@@ -1,4 +1,5 @@
 describe('simple react redux spec', ()=>{
+    dump(new Date().toTimeString());
     beforeAll(function () {
         spyOn(console, 'error');
         spyOn(console, 'warn');
