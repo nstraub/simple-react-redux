@@ -1,3 +1,4 @@
-import {} from './traverse';
-import {} from './map-state-to-props';
-import {} from './map-dispatch-to-props';
+import './traverse';
+import './map-state-to-props';
+import './map-dispatch-to-props';
+import './merge-props';
