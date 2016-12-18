@@ -1,5 +1,5 @@
 {
-  "name": "simple-react-redux",
+  "name": "declarative-react-redux",
   "version": "0.1.0",
   "description": "Allows you to map state and actions to props declaratively",
   "main": "./lib/index",
@@ -12,7 +12,9 @@
     "to",
     "props",
     "dispatch",
-    "connect"
+    "connect",
+    "declarative",
+    "simple"
   ],
   "author": "Nicolas Straub",
   "license": "MIT",
