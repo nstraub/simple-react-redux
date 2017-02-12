@@ -5,7 +5,7 @@ export default function traverse(obj, keys) {
 
         if (obj == undefined) { // coercive equality used to test for null as well.
             if(keys.length) {
-                throw new ReferenceError(currentKey);
+                throw new ReferenceError(`"${currentKey}" does not exist`);
             } else {
                 return null;
             }

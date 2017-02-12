@@ -12,10 +12,11 @@ export const state = {
 
 let testAction = (...args) => args.join();
 export const actions = {
-    CURRY: ['firstLevel.secondLevel.value', 'firstLevel.test'],
     testAction1: testAction,
     testAction2: testAction,
     testAction3: testAction,
     testAction4: testAction,
     testAction5: testAction,
 };
+
+export const testCurry = ['firstLevel.secondLevel.value', 'firstLevel.test'];

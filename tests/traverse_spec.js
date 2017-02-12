@@ -16,11 +16,11 @@ describe('object traversal function', () => {
     });
 
     it('throws error if supplied path doesn\'t exist', () => {
-        expect(() => runTest(['nonexistent', 'value'])).toThrowError('nonexistent');
+        expect(() => runTest(['nonexistent', 'value'])).toThrowError('"nonexistent" does not exist');
     });
 
     it('throws error if supplied path has a null value', () => {
-        expect(() => runTest(['second', 'value'])).toThrowError('second');
+        expect(() => runTest(['second', 'value'])).toThrowError('"second" does not exist');
     });
 
     it('returns null if last property value is null or undefined', () =>{

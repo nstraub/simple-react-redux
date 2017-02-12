@@ -3,22 +3,12 @@ import mapDispatchToProps from '../src/map-dispatch-to-props';
 import {actions} from './utils';
 
 describe('map dispatch to props', () => {
-    function cloneAndRemoveCurry() {
-        return {
-            testAction1: actions.testAction1,
-            testAction2: actions.testAction2,
-            testAction3: actions.testAction3,
-            testAction4: actions.testAction4,
-            testAction5: actions.testAction5
-        };
-    }
-
     function runTest(actions) {
         return mapDispatchToProps((ret) => {return ret + ' dispatched';}, {getFromActions: actions});
     }
 
     it('returns object with wrapped dispatch calls for all passed actions', () => {
-        var result = runTest(cloneAndRemoveCurry());
+        var result = runTest(actions);
 
         expect(result.testAction1(1)).toBe('1 dispatched');
         expect(result.testAction2(2)).toBe('2 dispatched');
@@ -32,7 +22,7 @@ describe('map dispatch to props', () => {
         expect(runTest(null)).toEqual({});
     });
 
-    it('ignores "CURRY" property', () => {
-        expect(runTest(actions).CURRY).not.toBeDefined();
+    it(`asserts actions is object`, () => {
+        expect(() => runTest('should throw error')).toThrowError('"getFromActions" must be an object, instead got string');
     });
 });

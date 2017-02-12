@@ -32,7 +32,7 @@ module.exports = function(config) {
     // pre-process matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'tests/index.js': 'webpack'
+      'tests/index.js': ['webpack', 'sourcemap']
     },
 
     webpack: webpackConfig,
@@ -40,7 +40,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['spec'],
+    reporters: ['spec', 'coverage' ],
 
 
     // web server port
@@ -69,7 +69,9 @@ module.exports = function(config) {
         'karma-phantomjs-launcher',
         'karma-jasmine',
         'karma-webpack',
-        'karma-spec-reporter'
+        'karma-spec-reporter',
+        'karma-coverage',
+        'karma-sourcemap-loader'
     ],
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

@@ -5,8 +5,11 @@ describe('simple react redux spec', ()=>{
         spyOn(console, 'warn');
     });
 
-    require('./traverse_spec');
-    require('./map-state-to-props_spec');
-    require('./map-dispatch-to-props_spec');
-    require('./merge-props_spec');
+    const testsContext = require.context('./', true, /utils|spec\.js$/);
+
+    testsContext.keys().forEach(testsContext);
+
+    const srcContext = require.context('../src/', true, /.*\.js$/);
+
+    srcContext.keys().forEach(srcContext);
 });
