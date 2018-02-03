@@ -2,13 +2,13 @@ import mapDispatchToProps from '../src/map-dispatch-to-props';
 
 import {actions} from './utils';
 
-describe('map dispatch to props', () => {
+export default () => {
     function runTest(actions) {
         return mapDispatchToProps((ret) => {return ret + ' dispatched';}, {getFromActions: actions});
     }
 
     it('returns object with wrapped dispatch calls for all passed actions', () => {
-        var result = runTest(actions);
+        const result = runTest(actions);
 
         expect(result.testAction1(1)).toBe('1 dispatched');
         expect(result.testAction2(2)).toBe('2 dispatched');
@@ -25,4 +25,4 @@ describe('map dispatch to props', () => {
     it(`asserts actions is object`, () => {
         expect(() => runTest('should throw error')).toThrowError('"getFromActions" must be an object, instead got string');
     });
-});
+};

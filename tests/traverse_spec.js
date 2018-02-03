@@ -2,7 +2,7 @@ import traverse from '../src/traverse';
 
 import {state} from './utils';
 
-describe('object traversal function', () => {
+export default () => {
     function initPath(rest) {
         return ['firstLevel'].concat(rest);
     }
@@ -23,7 +23,7 @@ describe('object traversal function', () => {
         expect(() => runTest(['second', 'value'])).toThrowError('"second" does not exist');
     });
 
-    it('returns null if last property value is null or undefined', () =>{
+    it('returns null if last property value is null or undefined', () => {
         expect(runTest('second')).toBeNull();
         expect(runTest('nothing')).toBeNull();
     });
@@ -35,4 +35,4 @@ describe('object traversal function', () => {
     it('gets a value from an array', () => {
         expect(runTest(['arr', 2, 'value'])).toBe('array test value');
     });
-});
+};

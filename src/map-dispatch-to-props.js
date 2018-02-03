@@ -1,9 +1,10 @@
 import {isPlainObject} from 'lodash/lang';
 
 export default function (dispatch, componentProps) {
-    var ret = {},
-        actions = componentProps.getFromActions;
+    const ret = {};
+    let actions = componentProps.getFromActions;
 
+    //noinspection EqualityComparisonWithCoercionJS
     if (actions != undefined) { // coercive inequality is used to check against null as well
         if (!isPlainObject(actions)) {
             throw new TypeError(`"getFromActions" must be an object, instead got ${typeof actions}`);

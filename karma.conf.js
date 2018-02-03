@@ -2,10 +2,11 @@
  * Karma configuration
  * Generated on Fri Dec 16 2016 01:54:12 GMT-0300 (Pacific SA Summer Time)
  */
-var webpackConfig = require('./webpack.config');
-webpackConfig.entry = {};
+//noinspection ES6ConvertVarToLetConst
+var webpackConfig = require('./webpack.config')
+webpackConfig.entry = {}
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -25,22 +26,33 @@ module.exports = function(config) {
 
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
 
 
     // pre-process matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'tests/index.js': ['webpack', 'sourcemap']
+      'tests/index.js': ['webpack']
     },
 
-    webpack: webpackConfig,
+    webpack: {
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            loader: 'babel-loader',
+            options: {presets: ['es2015'], plugins: [['istanbul', {exclude: ['tests']}]]},
+            enforce: 'post'
+          }
+        ]
+
+      }
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['spec', 'coverage' ],
+    reporters: ['spec', 'coverage'],
 
 
     // web server port
@@ -64,15 +76,6 @@ module.exports = function(config) {
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['PhantomJS'],
 
-    plugins : [
-        'karma-chrome-launcher',
-        'karma-phantomjs-launcher',
-        'karma-jasmine',
-        'karma-webpack',
-        'karma-spec-reporter',
-        'karma-coverage',
-        'karma-sourcemap-loader'
-    ],
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false,
@@ -81,4 +84,4 @@ module.exports = function(config) {
     // how many browser should be started simultaneous
     concurrency: Infinity
   })
-};
+}

@@ -4,7 +4,7 @@ export default function mergeProps(state, actions) {
         delete state.CURRY;
 
         Object.keys(actions).forEach(function (key) {
-            var action = actions[key];
+            const action = actions[key];
             actions[key] = function(...args) {
                 return action.apply(null, curry.concat(args));
             };

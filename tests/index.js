@@ -1,15 +1,17 @@
+import mapDispatchToPropsSpec from './map-dispatch-to-props_spec';
+import mapStateToPropsSpec from './map-state-to-props_spec';
+import mergePropsSpec from './merge-props_spec';
+import traverseSpec from './traverse_spec';
+import '../src/extensions';
+
 describe('simple react redux spec', ()=>{
-    dump(new Date().toTimeString());
     beforeAll(function () {
         spyOn(console, 'error');
         spyOn(console, 'warn');
     });
 
-    const testsContext = require.context('./', true, /utils|spec\.js$/);
-
-    testsContext.keys().forEach(testsContext);
-
-    const srcContext = require.context('../src/', true, /.*\.js$/);
-
-    srcContext.keys().forEach(srcContext);
+    describe('map dispatch to props', mapDispatchToPropsSpec);
+    describe('map state to props', mapStateToPropsSpec);
+    describe('merge props function', mergePropsSpec);
+    describe('object traversal function', traverseSpec);
 });

@@ -2,13 +2,13 @@ import mapStateToProps from '../src/map-state-to-props/index';
 
 import {state, testCurry} from './utils';
 
-describe('map state to props', () => {
+export default () => {
     function runTest (paths) {
         return mapStateToProps(state, {getFromState: paths});
     }
 
     it('returns an object with correct values when one path is passed', () => {
-        var result = {
+        const result = {
             secondLevel: {
                 value: 'second level test value'
             }
@@ -18,7 +18,7 @@ describe('map state to props', () => {
     });
 
     it('returns an object with correct values when multiple paths are passed', () => {
-        var result = {
+        const result = {
             secondLevel: {
                 value: 'second level test value'
             },
@@ -41,7 +41,7 @@ describe('map state to props', () => {
     });
 
     it('Continues parsing values if there are invalid paths', () => {
-        var result = {
+        const result = {
             test: 'first level test value'
         };
         expect(runTest(['firstLevel.nonexistent.secondLevel', 'firstLevel.test'])).toEqual(result);
@@ -51,7 +51,7 @@ describe('map state to props', () => {
 
     describe('action currying', () => {
         function runTest(curry, expected) {
-            var result = mapStateToProps(state, {curryActionsWith: curry});
+            const result = mapStateToProps(state, { curryActionsWith: curry });
 
             expect(result.CURRY).toBeDefined();
             expect(result.CURRY).toEqual(expected);
@@ -76,11 +76,11 @@ describe('map state to props', () => {
         });
 
         it(`doesn't make a CURRY property if no currying is needed`, () => {
-            var result = mapStateToProps(state, {});
+            const result = mapStateToProps(state, {});
 
             expect(result.CURRY).not.toBeDefined();
         });
 
         afterEach(()=> console.warn.calls.reset());
     });
-});
+};

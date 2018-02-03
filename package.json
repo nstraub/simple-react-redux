@@ -20,26 +20,26 @@
   "author": "Nicolas Straub",
   "license": "MIT",
   "devDependencies": {
-    "babel-loader": "^6.2.10",
-    "babel-preset-es2015": "^6.18.0",
-    "eslint": "^3.12.2",
-    "eslint-plugin-react": "^6.8.0",
-    "isparta-loader": "^2.0.0",
-    "jasmine": "^2.5.2",
-    "jasmine-core": "^2.5.2",
-    "karma": "^1.3.0",
-    "karma-chrome-launcher": "^2.0.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^4.17.0",
+    "jasmine-core": "^2.9.1",
+    "karma": "^2.0.0",
     "karma-coverage": "^1.1.1",
-    "karma-jasmine": "^1.1.0",
-    "karma-phantomjs-launcher": "^1.0.2",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-spec-reporter": "0.0.26",
-    "karma-webpack": "^1.8.0",
-    "lodash": "^4.17.2",
+    "karma-jasmine": "^1.1.1",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-spec-reporter": "0.0.32",
+    "karma-webpack": "^2.0.9",
+    "lodash": "^4.17.4",
     "phantomjs-polyfill-object-assign": "0.0.2",
-    "webpack": "^1.14.0"
+    "webpack": "^3.10.0"
   },
   "peerDependencies": {
     "react-redux": ">=0.9.0"
+  },
+  "dependencies": {
+    "react-redux": "^5.0.6"
   }
 }

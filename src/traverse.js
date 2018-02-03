@@ -3,6 +3,7 @@ export default function traverse(obj, keys) {
         let currentKey = keys.shift();
         obj = obj[currentKey];
 
+        //noinspection EqualityComparisonWithCoercionJS
         if (obj == undefined) { // coercive equality used to test for null as well.
             if(keys.length) {
                 throw new ReferenceError(`"${currentKey}" does not exist`);
